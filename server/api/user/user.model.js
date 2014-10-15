@@ -16,6 +16,10 @@ var UserSchema = new Schema({
     type: Schema.Types.ObjectId, 
     ref: 'Conversation'
   }],
+  contacts: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   joinDate: {
     type: Date,
     default: Date.now
