@@ -1,44 +1,44 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+Schema = mongoose.Schema;
 
 var MessageSchema = new Schema({
-  to: {
-        type: Schema.ObjectId,
-        ref: 'User'
-  },
-  from: {
-        type: Schema.ObjectId,
-        ref: 'User'
-  },
-  time: {
-        sent: {
-                type: Date,
-                default: Date.now
-        },
-        recieved: Date,
-        viewed: Date
-  },
-  status: {
-        type: String,
-        default: "sent"
-  },
-  location: {
-        sent: {
-                lng: Number,
-                lat: Number
-        },
-        recieved: {
-                lng: Number,
-                lat: Number
-        },
-        viewed: {
-                lng: Number,
-                lat: Number
-        }
-  },
-  message: String
+	to: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
+	from: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	},
+	time: {
+		sent: {
+			type: Date,
+			default: Date.now
+		},
+		recieved: Date,
+		viewed: Date
+	},
+	status: {
+		type: String,
+		default: "sent"
+	},
+	location: {
+		sent: {
+			lng: Number,
+			lat: Number
+		},
+		recieved: {
+			lng: Number,
+			lat: Number
+		},
+		viewed: {
+			lng: Number,
+			lat: Number
+		}
+	},
+	message: String
 });
 
 module.exports = mongoose.model('Message', MessageSchema);
