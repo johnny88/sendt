@@ -1,8 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $fa-font-path: "/bower_components/font-awesome/fonts";
+$navbar-default-bg: #db0a5a;
+$navbar-default-color: #fff;
+$navbar-default-link-color: #fff;
+$font-family-sans-serif: 'Ubuntu', sans-serif;
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
+
 
 /**
  * App-wide Styles
