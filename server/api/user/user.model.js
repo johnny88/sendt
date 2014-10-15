@@ -3,6 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
+var Message = require('../message/message.model')
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
@@ -12,6 +13,20 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  conversations: [
+    {
+      messages: [Message]
+    }
+  ],
+  joinDate: {
+    type: Date,
+    default: Date.now
+  },
+  lastActive: {
+    type: Date,
+    default: Date.now
+  },
+  status: String,
   hashedPassword: String,
   provider: String,
   salt: String,
