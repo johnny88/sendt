@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
-var Message = require('../message/message.model')
+var Conversation = require('../conversation/conversation.model')
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
@@ -13,11 +13,7 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
-  conversations: [
-    {
-      messages: [Message]
-    }
-  ],
+  conversations: [Conversation],
   joinDate: {
     type: Date,
     default: Date.now
