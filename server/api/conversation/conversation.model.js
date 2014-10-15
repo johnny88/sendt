@@ -12,7 +12,8 @@ var ConversationSchema = new Schema({
   messages: [{
   	type: Schema.Types.ObjectId, 
   	ref: 'Message'
-  }]
+  }],
+  owner: String
 });
 
 module.exports = mongoose.model('Conversation', ConversationSchema);
