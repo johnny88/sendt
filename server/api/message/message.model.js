@@ -12,6 +12,7 @@ var MessageSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+	type: String,
 	time: {
 		sent: {
 			type: Date,
