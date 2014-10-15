@@ -1,0 +1,4 @@
+[
+	{ "provider" : "local", "name" : "Test User", "email" : "test@test.com", "hashedPassword" : "EcqbeDIuezMfPlg/gacilC8U7T+dFiQUHVjEmACIohXY09TnAH10k9XuyE/HCdEkE0971xc5sLnX1TQXwdDSSw==", "salt" : "Duwl9XN64r6pVbjgL6Cnmg==", "lastActive" : { "$date" : "2014-10-15T16:24:53.361-0400" }, "joinDate" : { "$date" : "2014-10-15T16:24:53.361-0400" }, "contacts" : [], "conversations" : [], "role" : "user", "__v" : 0 },
+	{ "provider" : "local", "name" : "Admin", "email" : "admin@admin.com", "hashedPassword" : "tqe0qKr4K4+gEYJJNeAnK3i/Yhw4rMsXKKo15We5xByQPiFIMtLtoMwBPOLOu5scKaze66VFhRdy58vpqEC+LQ==", "salt" : "FaXldf9eOK5GbjHiMkTbbQ==", "lastActive" : { "$date" : "2014-10-15T16:24:53.396-0400" }, "joinDate" : { "$date" : "2014-10-15T16:24:53.396-0400" }, "contacts" : [], "conversations" : [], "role" : "admin", "__v" : 0 }
+]

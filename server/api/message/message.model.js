@@ -39,7 +39,11 @@ var MessageSchema = new Schema({
 			lat: Number
 		}
 	},
-	message: String
+	message: {
+		category: String,
+		text: String,
+		data: Buffer 	
+	}
 });
 
 module.exports = mongoose.model('Message', MessageSchema);
