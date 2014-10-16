@@ -14,7 +14,14 @@
       padding-left: 15px;
     }
   }
-
-
+}
+.messages{
+  color: $text-color-dark;
+  background-color: $background-light;
+  .send-message{
+    bottom: 1%;
+    position: fixed;
+    padding: 0 2%;
+  }
 }
 

@@ -1,23 +1,60 @@
-<div class="conversations conversations-container" ng-controller="ConversationsCtrl">
-  <h2 class="title">Conversations</h2>
-  <div>{{messages}}</div>
-  <div class="conversation" ng-repeat="conversation in conversations">
-    <h3> 
-      <span ng-repeat="participant in conversation.participants"> 
-        <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
-      </span>
-    </h3>
-    <span ng-repeat="message in messages">
-      <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
-    </span>
-	</div>
+<div class="conversations" ng-controller="ConversationsCtrl">
+  <div class="row">
+    <div class="col-lg-3 conversations-container dashboard-component-container-left">
+      <h2 class="title">Conversations</h2>
+      <div class="conversation" ng-repeat="conversation in conversations">
+        <h3 ng-click="loadMessages(conversation)"> 
+          <span ng-repeat="participant in conversation.participants"> 
+            <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
+          </span>
+        </h3>
+        <span ng-repeat="message in messages">
+          <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-9 dashboard-component-container-right">
+
+      <div class="messages messages-container" ng-hide="inSettings">
+        <div ng-repeat="message in messages">
+          {{message.message.text}}
+        </div>
+        <div class="send-message">
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Sendt!</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacts contacts-container" ng-hide="inSettings" ng-controller="ContactsCtrl">
+        <h2 class="title">Contacts</h2>
+        <div class="contact" ng-repeat="contact in contacts">
+            <span>{{contact._id}}</span>
+            <span>{{contact.name}}</span>
+            <span>{{contact.email}}</span>
+        </div>
+      </div>
+      
+      <div class="settings settings-container" ng-show="inSettings" ng-include="'app/account/settings/settings.html'"></div>
+
+    </div>
+  </div>
 </div>
+
+
+      
+
 
 <script>
   $(function() {
     $(".conversations-container").height($(document).height() - $(".navbar").height());
+    $(".messages-container").height($(document).height() - $(".navbar").height());
     $( window ).resize(function(){
       $(".conversations-container").height($(document).height() - $(".navbar").height());
+      $(".messages-container").height($(document).height() - $(".navbar").height());
     });
   });
 </script>
