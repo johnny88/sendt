@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('ConversationsCtrl', function ($scope, Conversation) {
+  .controller('ConversationsCtrl', function ($scope, Conversation, Message,Auth) {
   	// Add the conversations to the view
     $scope.conversations = Conversation.query();
+    $scope.messages = Message.query();
+    $scope.getCurrentUser = Auth.getCurrentUser;
   });
