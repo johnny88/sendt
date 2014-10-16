@@ -6,6 +6,7 @@ var User = require('../user/user.model');
 // Get list of contacts
 exports.index = function(req, res) {
   var userId = req.user._id;
+
   User.findById(userId).populate("contacts", "name email").exec(function (err, user) {
     if(err) { return handleError(res, err); }
     if (!user) return res.send(401);
