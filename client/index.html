@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-view=""></div>
+    <div ng-include="'components/layout/layout.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -70,11 +70,14 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/dashboard/conversations/conversation.service.js"></script>
           <script src="app/dashboard/conversations/conversations.controller.js"></script>
+          <script src="app/dashboard/messages/messages.controller.js"></script>
+          <script src="app/dashboard/messages/messages.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/carousel/carousel.controller.js"></script>
+          <script src="components/layout/layout.controller.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>

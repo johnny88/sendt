@@ -1,6 +1,5 @@
 <div class="conversations" ng-controller="ConversationsCtrl">
-  <div class="row">
-    <div class="col-lg-3 conversations-container dashboard-component-container-left">
+    
       <h2 class="title">Conversations</h2>
       <div class="conversation" ng-repeat="conversation in conversations">
         <h3 ng-click="loadMessages(conversation)"> 
@@ -8,9 +7,9 @@
             <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
           </span>
         </h3>
-      </div>
+        
     </div>
-    <div class="col-lg-9 dashboard-component-container-right">
+<!--     <div class="col-lg-9 dashboard-component-container-right">
       <div class="messages">
         <div class="messages-container">
           <div ng-repeat="message in messages">
@@ -29,7 +28,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 
