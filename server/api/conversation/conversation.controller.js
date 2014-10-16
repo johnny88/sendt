@@ -12,7 +12,6 @@ exports.index = function(req, res) {
   var userId = req.user._id;
   User.findById(userId).populate("conversations", "owner participants").exec(function (err, user) { 
     if(err) { return handleError(res, err); }
-    
     // Populate the participants of our conversations
     async.each(user.conversations, function(conversation, callback) {
       User.populate(conversation, {"path": "participants", "select": "name email"}, function (err) {

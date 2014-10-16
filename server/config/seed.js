@@ -67,7 +67,8 @@ User.create(users, function(err, users) {
               message: {
                 category: "text",
                 text: "Hello world. Woo!"
-              }
+              },
+              conversation: mongoose.Types.ObjectId(conversation._id)
             });
 
             // Save the message
