@@ -1,5 +1,9 @@
-<div class="conversations conversations-container">
+<div class="conversations conversations-container" ng-controller"ConversationsCtrl">
   <h2 class="title">Conversations</h2>
+
+  <ul ng-repeat="conversation in conversations">
+		<li>{{conversation.owner}}</li>
+	</ul>
 </div>
 
 <script>

@@ -1,12 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .factory('Conversation', function ($http, User, $cookieStore) {
-    var currentUser = {};
-    if ($cookieStore.get('token')) {
-      currentUser = User.get();
-    }
-
+  .factory('Conversation', function ($resource) {
     return $resource('/api/conversations/:id/', {
       id: '@_id'
     },
