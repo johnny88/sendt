@@ -15,7 +15,7 @@ exports.index = function(req, res) {
     
     // Populate the participants of our conversations
     async.each(user.conversations, function(conversation, callback) {
-      User.populate(conversation, {"path": "participants", "select": "name email"}, function(err) {
+      User.populate(conversation, {"path": "participants", "select": "name email"}, function (err) {
         if(err) { return callback(err) }
         callback();
       });
@@ -28,10 +28,13 @@ exports.index = function(req, res) {
 
 // Get a single conversation
 exports.show = function(req, res) {
-  Conversation.findById(req.params.id, function (err, conversation) {
+  Conversation.findById(req.params.id, "owner participants", function (err, conversation) {
     if(err) { return handleError(res, err); }
     if(!conversation) { return res.send(404); }
-    return res.json(conversation);
+    User.populate(conversation, {"path": "participants", "select": "name email"}, function (err) {
+      if(err) { return handleError(res, err); }
+      res.json(200, conversation);
+    });
   });
 };
 
