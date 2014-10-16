@@ -16,7 +16,7 @@ exports.index = function(req, res) {
     // Populate the participants of our conversations
     async.each(user.conversations, function(conversation, callback) {
       User.populate(conversation, {"path": "participants", "select": "name email"}, function(err) {
-        if(err) { return handleError(res, err); }
+        if(err) { return callback(err) }
         callback();
       });
     }, function(err) {
