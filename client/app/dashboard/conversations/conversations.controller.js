@@ -5,22 +5,27 @@ angular.module('sendtApp')
   	// Add the conversations to the view
     $scope.conversations = Conversation.query();
     $scope.getCurrentUser = Auth.getCurrentUser;
-    var conversationsss = null;
+    var active_conversation = null;
 
     $scope.loadMessages = function(conversation) {
     	$scope.messages = Message.query({ id: conversation._id });
-        socket.syncUpdates('message', $scope.messages);
-    	conversationsss = conversation;
+      socket.syncUpdates('message', $scope.messages);
+    	active_conversation = conversation;
     };
 
     $scope.sendMessage = function() {
-    	console.log(conversationsss)
+      if ($scope.message.length === 0) { return; }
+      if (active_conversation === null) { return; }
+
     	var msg = new Message();
-    	msg.conversation = conversationsss._id;
+    	msg.conversation = active_conversation._id;
     	msg.message = {
     		text: $scope.message
     	};
     	Message.save(msg);
+
+      // Reset the form
+      $scope.message = ""
     };
   
   });
