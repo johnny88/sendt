@@ -2,7 +2,7 @@
   <h2 class="title">Conversations</h2>
   <div>{{messages}}</div>
   <div class="conversation" ng-repeat="conversation in conversations">
-    <h3> 
+    <h3 ng-click="loadMessages(conversation)"> 
       <span ng-repeat="participant in conversation.participants"> 
         <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
       </span>
