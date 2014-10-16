@@ -1,22 +1,15 @@
 'use strict';
 
 var _ = require('lodash');
+var Conversation = require('../conversation/conversation.model');
 var Message = require('./message.model');
 
-// Get list of messages
-exports.index = function(req, res) {
-  Message.find(function (err, messages) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, messages);
-  });
-};
-
-// Get a single message
+// Get messages from a single conversation
 exports.show = function(req, res) {
-  Message.findById(req.params.id, function (err, message) {
+  Conversation.findById(req.params.id).populate("messages", "to from status message time").exec(function(err, conversation) {
     if(err) { return handleError(res, err); }
-    if(!message) { return res.send(404); }
-    return res.json(message);
+    if(!conversation) { return res.send(404); }
+    return res.json(conversation.messages);
   });
 };
 
