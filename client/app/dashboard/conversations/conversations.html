@@ -8,23 +8,24 @@
             <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
           </span>
         </h3>
-        <span ng-repeat="message in messages">
-          <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
-        </span>
       </div>
     </div>
     <div class="col-lg-9 dashboard-component-container-right">
 
-      <div class="messages messages-container" ng-hide="inSettings">
-        <div ng-repeat="message in messages">
-          {{message.message.text}}
-        </div>
-        <div class="send-message">
-          <div class="input-group">
-            <input type="text" class="form-control">
-            <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">Sendt!</button>
-            </span>
+      <div class="messages" ng-hide="inSettings">
+        <div class="messages-container">
+          <div ng-repeat="message in messages">
+            <div>
+              {{message.message.text}}
+            </div>
+          </div>
+          <div class="send-message">
+            <div class="input-group">
+              <input type="text" class="form-control" ng-model="message">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" ng-click="sendMessage()">Sendt!</button>
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -51,10 +52,10 @@
 <script>
   $(function() {
     $(".conversations-container").height($(document).height() - $(".navbar").height());
-    $(".messages-container").height($(document).height() - $(".navbar").height());
+    $(".messages").height($(document).height() - $(".navbar").height());
     $( window ).resize(function(){
       $(".conversations-container").height($(document).height() - $(".navbar").height());
-      $(".messages-container").height($(document).height() - $(".navbar").height());
+      $(".messages").height($(document).height() - $(".navbar").height());
     });
   });
 </script>

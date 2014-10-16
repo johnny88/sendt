@@ -24,9 +24,18 @@ exports.show = function(req, res) {
 
 // Creates a new message in the DB.
 exports.create = function(req, res) {
-  Message.create(req.body, function(err, message) {
+  var updated = _.merge({from: req.user._id}, req.body);
+
+  Message.create(updated, function(err, message) {
     if(err) { return handleError(res, err); }
-    return res.json(201, message);
+    Conversation.findById(updated.conversation, function(err, conversation) {
+      if(err) { return handleError(res, err); }
+      conversation.messages.push(message);
+      conversation.save(function(err) {
+        if(err) { return handleError(res, err); }
+        return res.json(201, message);
+      });
+    });
   });
 };
 
