@@ -3,6 +3,7 @@
 angular.module('sendtApp')
   .controller('MainCtrl', function ($scope, $http, socket, Auth, $location) {
     $scope.awesomeThings = [];
+    $scope.isLoggedIn = Auth.isLoggedIn;
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;

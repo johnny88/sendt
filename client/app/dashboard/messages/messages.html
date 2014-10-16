@@ -1,0 +1,10 @@
+<div class="messages messages-container">
+</div>
+<script>
+  $(function() {
+    $(".messages-container").height($(document).height() - $(".navbar").height());
+    $( window ).resize(function(){
+      $(".messages-container").height($(document).height() - $(".navbar").height());
+    });
+  });
+</script>
