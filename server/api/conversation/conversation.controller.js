@@ -1,6 +1,7 @@
 'use strict';
 
 var async = require('async');
+var _ = require('lodash');
 var Conversation = require('./conversation.model');
 var User = require('../user/user.model');
 var Conversation = require('../conversation/conversation.model');

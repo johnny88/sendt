@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Auth, $location) {
+  .controller('MainCtrl', function ($scope, $http, socket, Auth) {
     $scope.awesomeThings = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
 
