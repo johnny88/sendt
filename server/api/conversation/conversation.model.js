@@ -13,7 +13,10 @@ var ConversationSchema = new Schema({
   	type: Schema.Types.ObjectId, 
   	ref: 'Message'
   }],
-  owner: String
+  owner: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  }
 });
 
 module.exports = mongoose.model('Conversation', ConversationSchema);
