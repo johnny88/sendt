@@ -8,4 +8,11 @@ angular.module('sendtApp')
     {
       // Custom methods go here
     });
-  });
+  }).factory('Message', function ($resource) {
+    return $resource('/api/messages/:id/', {
+      id: '@_id'
+    },
+    {
+      // Custom methods go here
+    });
+  });;
