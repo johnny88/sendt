@@ -61,3 +61,14 @@ span.primary-color{
   color: #fff;
 }
 
+.container-small{
+  width: 550px;
+  margin: auto;
+}
+.container-small.not-nav-section{
+  padding: 0 5px;
+}
+
+.container-small.nav-section{
+  padding-top:20px;
+}
