@@ -1,6 +1,6 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/navbar_small.html'"></div>
 
-<div class="container">
+<div class="container-small not-nav-section">
   <div class="row">
     <div class="col-sm-12">
       <h1>Sign up</h1>
@@ -55,15 +55,12 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          <button class="btn btn-primary btn-lg btn-login" type="submit">
             Sign up
           </button>
-          <a class="btn btn-default btn-lg btn-register" href="/login">
-            Login
-          </a>
         </div>
 
-        <hr>
+<!--         <hr>
         <div>
           <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
             <i class="fa fa-facebook"></i> Connect with Facebook
@@ -74,7 +71,7 @@
           <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
             <i class="fa fa-twitter"></i> Connect with Twitter
           </a>
-        </div>
+        </div> -->
       </form>
     </div>
   </div>
