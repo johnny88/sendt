@@ -6,15 +6,22 @@ angular.module('sendtApp')
     $scope.conversations = Conversation.query();
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.inSettings = false;
+    $scope.inContacts = false;
     var active_conversation = null;
-    
+
     $scope.$on("settingsClick", function (event, args) {
-	   $scope.inSettings = true;
-	});
+	    $scope.inSettings = true;
+      $scope.inContacts = false;
+    });
 
     $scope.closeSettings = function() {
     	$scope.inSettings = false;
     };
+
+    $scope.contacts = function() {
+      $scope.inContacts = true;
+      $scope.inSettings = false;
+    }
 
     $scope.loadMessages = function(conversation) {
     	$scope.messages = Message.query({ id: conversation._id });

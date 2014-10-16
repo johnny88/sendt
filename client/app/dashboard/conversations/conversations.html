@@ -1,6 +1,7 @@
 <div class="conversations" ng-controller="ConversationsCtrl">
   <div class="row">
     <div class="col-lg-3 conversations-container dashboard-component-container-left">
+      <a href="" ng-click="contacts()"><h2 class="title">Contacts</h2></a>
       <h2 class="title">Conversations</h2>
       <div class="conversation" ng-repeat="conversation in conversations">
         <h3 ng-click="loadMessages(conversation)"> 
@@ -12,7 +13,7 @@
     </div>
     <div class="col-lg-9 dashboard-component-container-right">
 
-      <div class="messages" ng-hide="inSettings">
+      <div class="messages" ng-hide="inSettings || inContacts">
         <div class="messages-container">
           <div ng-repeat="message in messages">
             <div>
@@ -30,7 +31,7 @@
         </div>
       </div>
 
-      <div class="contacts contacts-container" ng-hide="inSettings" ng-controller="ContactsCtrl">
+      <div class="contacts contacts-container ng-hide" ng-show="inContacts" ng-controller="ContactsCtrl">
         <h2 class="title">Contacts</h2>
         <div class="contact" ng-repeat="contact in contacts">
             <span>{{contact._id}}</span>
