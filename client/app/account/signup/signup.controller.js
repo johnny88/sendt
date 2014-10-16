@@ -15,8 +15,8 @@ angular.module('sendtApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
+          // Account created, redirect to dashboard
+          $location.path('/dashboard');
         })
         .catch( function(err) {
           err = err.data;
