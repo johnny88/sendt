@@ -20,9 +20,9 @@
         </div>
         <div class="send-message">
           <div class="input-group">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" ng-model="message">
             <span class="input-group-btn">
-              <button class="btn btn-primary" type="button">Sendt!</button>
+              <button class="btn btn-primary" type="button" ng-click="sendMessage()">Sendt!</button>
             </span>
           </div>
         </div>
