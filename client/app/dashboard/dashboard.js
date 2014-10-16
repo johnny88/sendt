@@ -8,3 +8,4 @@ angular.module('sendtApp')
         controller: 'DashboardCtrl'
       });
   });
+

@@ -1,6 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 $primary-color: #db0a5a;
 $secondary-color: #f5ab35;
+$text-color-dark: #595959;
+$background-light: #ececec;
+$background-dark: #d2d7d3;
 
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $fa-font-path: "/bower_components/font-awesome/fonts";
@@ -15,6 +18,7 @@ $navbar-default-link-color: #fff;
 $navbar-default-link-active-color: #fff;
 $navbar-default-link-hover-color: $secondary-color;
 $navbar-height:50px;
+$navbar-margin-bottom:0px;
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
@@ -35,6 +39,15 @@ $navbar-height:50px;
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'dashboard/conversations/conversations.scss';
 @import 'main/main.scss';
 @import 'modal/modal.scss';
 // endinjector
+
+html{
+    min-height:100%;/* make sure it is at least as tall as the viewport */
+    position:relative
+}
+body{
+    height:100% /* force the BODY element to match the height of the HTML element */
+}

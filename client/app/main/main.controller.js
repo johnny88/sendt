@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, Auth, $location) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -24,4 +24,5 @@ angular.module('sendtApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
   });
