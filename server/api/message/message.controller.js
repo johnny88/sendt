@@ -4,6 +4,15 @@ var _ = require('lodash');
 var Conversation = require('../conversation/conversation.model');
 var Message = require('./message.model');
 
+// Find all messages that we have sent or recieved
+exports.index = function(req, res) {
+  var userId = req.user._id;
+  Message.find({$or: [{to: userId}, {from: userId}]}, "to from status message time conversation", function(err, messages) {
+    if(err) { return handleError(res, err); }
+    return res.json(messages);
+  });
+};
+
 // Get messages from a single conversation
 exports.show = function(req, res) {
   Conversation.findById(req.params.id).populate("messages", "to from status message time").exec(function(err, conversation) {
