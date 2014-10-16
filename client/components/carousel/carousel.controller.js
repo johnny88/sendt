@@ -5,7 +5,6 @@ angular.module('sendtApp')
     $scope.myInterval = 5000;
     var slides = $scope.slides = [];
     $scope.addSlide = function() {
-      var newWidth = 600 + slides.length;
       slides.push({
         image: 'http://placehold.it/900x500',
         text: 'placeholder'
