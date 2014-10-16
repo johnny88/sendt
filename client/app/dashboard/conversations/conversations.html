@@ -7,6 +7,9 @@
         <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
       </span>
     </h3>
+    <span ng-repeat="message in messages">
+      <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
+    </span>
 	</div>
 </div>
 
