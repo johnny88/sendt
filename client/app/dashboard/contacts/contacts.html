@@ -1,0 +1,17 @@
+<div class="contacts contacts-container" ng-controller="ContactsCtrl">
+  <h2 class="title">Contacts</h2>
+  <div class="contact" ng-repeat="contact in contacts">
+      <span>{{contact._id}}</span>
+      <span>{{contact.name}}</span>
+      <span>{{contact.email}}</span>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $(".contacts-container").height($(document).height() - $(".navbar").height());
+    $( window ).resize(function(){
+      $(".contacts-container").height($(document).height() - $(".navbar").height());
+    });
+  });
+</script>

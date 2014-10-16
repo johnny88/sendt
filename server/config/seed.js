@@ -83,8 +83,14 @@ User.create(users, function(err, users) {
             });
           }
         });
+
+        // Give the users some contacts
+        users[0].contacts = [mongoose.Types.ObjectId(users[1]._id)];
+        users[0].save();
+        
+        users[1].contacts = [mongoose.Types.ObjectId(users[0]._id)];
+        users[1].save();
       }
     });
   }
 });
-
