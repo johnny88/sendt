@@ -4,13 +4,7 @@
 </div>
 
 <div  ng-show="isLoggedIn()">
-  <div class="row">
-    <div class="col-lg-3 dashboard-component-container-left">
-      <div ng-include="'app/dashboard/conversations/conversations.html'"></div>
-    </div>
-    <div class="col-lg-9 dashboard-component-container-right">
-      <div ng-hide="inSettings" ng-include="'app/dashboard/messages/messages.html'"></div>
-      <div ng-show="inSettings" ng-include="'app/account/settings/settings.html'"></div>
-    </div>
-  </div>
+  
+  <div ng-include="'app/dashboard/conversations/conversations.html'"></div>
+
 </div>

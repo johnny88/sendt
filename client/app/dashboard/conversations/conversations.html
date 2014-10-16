@@ -1,23 +1,38 @@
-<div class="conversations conversations-container" ng-controller="ConversationsCtrl">
-  <h2 class="title">Conversations</h2>
-  <div>{{messages}}</div>
-  <div class="conversation" ng-repeat="conversation in conversations">
-    <h3 ng-click="loadMessages(conversation)"> 
-      <span ng-repeat="participant in conversation.participants"> 
-        <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
-      </span>
-    </h3>
-    <span ng-repeat="message in messages">
-      <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
-    </span>
-	</div>
+<div class="conversations" ng-controller="ConversationsCtrl">
+  <div class="row">
+    <div class="col-lg-3 conversations-container dashboard-component-container-left">
+      <h2 class="title">Conversations</h2>
+      <div class="conversation" ng-repeat="conversation in conversations">
+        <h3 ng-click="loadMessages(conversation)"> 
+          <span ng-repeat="participant in conversation.participants"> 
+            <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
+          </span>
+        </h3>
+        <span ng-repeat="message in messages">
+          <span ng-if="message.conversation == conversation._id">{{message.message.text}}</span>
+        </span>
+      </div>
+    </div>
+    <div class="col-lg-9 dashboard-component-container-right">
+      <div class="messages messages-container">
+        <div ng-repeat="message in messages">
+          {{message.message.text}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
 
 <script>
   $(function() {
     $(".conversations-container").height($(document).height() - $(".navbar").height());
+    $(".messages-container").height($(document).height() - $(".navbar").height());
     $( window ).resize(function(){
       $(".conversations-container").height($(document).height() - $(".navbar").height());
+      $(".messages-container").height($(document).height() - $(".navbar").height());
     });
   });
 </script>
