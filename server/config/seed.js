@@ -14,8 +14,6 @@ var Message = require('../api/message/message.model');
 
 // Import our data
 var users = require('./data/users.json');
-var conversations = require('./data/conversations.json');
-var messages = require('./data/messages.json');
 
 // Clean out the database
 User.find().remove().exec();
@@ -47,7 +45,7 @@ User.create(users, function(err, users) {
         var conversation = new Conversation({
           messages: [],
           participants: participants,
-          owner: users[0]._id
+          owner: mongoose.Types.ObjectId(users[0]._id)
         });
 
         // Save the new conversation

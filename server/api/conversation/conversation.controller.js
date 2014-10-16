@@ -1,13 +1,28 @@
 'use strict';
 
+var async = require('async');
 var _ = require('lodash');
 var Conversation = require('./conversation.model');
+var User = require('../user/user.model');
+var Conversation = require('../conversation/conversation.model');
+var Message = require('../message/message.model');
 
-// Get list of conversations
+// Get list of all conversations that the current user has
 exports.index = function(req, res) {
-  Conversation.find(function (err, conversations) {
+  var userId = req.user._id;
+  User.findById(userId).populate("conversations", "owner participants").exec(function (err, user) { 
     if(err) { return handleError(res, err); }
-    return res.json(200, conversations);
+    
+    // Populate the participants of our conversations
+    async.each(user.conversations, function(conversation, callback) {
+      User.populate(conversation, {"path": "participants", "select": "name email"}, function(err) {
+        if(err) { return callback(err) }
+        callback();
+      });
+    }, function(err) {
+        if(err) { return handleError(res, err); }
+        res.json(200, user.conversations);
+    });
   });
 };
 
