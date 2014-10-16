@@ -18,6 +18,11 @@
 .messages{
   color: $text-color-dark;
   background-color: $background-light;
+  .messages-container{
+    overflow-y: scroll;
+    height: 90%;
+    padding: 10px;
+  }
   .send-message{
     bottom: 1%;
     position: fixed;
