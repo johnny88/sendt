@@ -60,7 +60,17 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Conversation.create(req.body, function(err, conversation) {
     if(err) { return handleError(res, err); }
-    return res.json(201, conversation);
+
+    User.findById(req.user._id, function (err, user) {
+      if (err) { return handleError(res, err); }
+      if(!user) { return res.send(404); }   
+
+      user.conversations.push(conversation._id);
+      user.save(function (err) {
+        if (err) { return handleError(res, err); } 
+        return res.json(201, conversation);
+      });
+    });
   });
 };
 

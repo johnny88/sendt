@@ -1,7 +1,7 @@
 <div class="" ng-controller="SidebarCtrl">
 	<h4 ng-click="goToContacts()">Contacts</h4>	
+	<h4>Conversations<small> (5)</small></h4>
   <ul class="chat-users" ng-repeat="conversation in conversations">
-    <h4>Conversations<small> (5)</small></h4>
     <li ng-click="viewConversation(conversation)">
       <span ng-repeat="participant in conversation.participants"> 
         <span ng-if="participant._id != getCurrentUser()._id">{{participant.name}}</span>
