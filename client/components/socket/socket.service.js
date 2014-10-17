@@ -61,6 +61,27 @@ angular.module('sendtApp')
         });
       },
 
+      syncContacts: function (modelName, array, cb) {
+        cb = cb || angular.noop;
+
+        socket.on(modelName + ':save', function (user) {
+          // //var oldItem = _.find(array, {_id: item._id});
+          // var index = array.indexOf(oldItem);
+          var event = 'created';
+
+          // // replace oldItem if it exists
+          // // otherwise just add item to the collection
+          // if (oldItem) {
+          //   array.splice(index, 1, item);
+          //   event = 'updated';
+          // } else {
+          array = user.contacts;
+          var item = user;
+
+          cb(event, item, array);
+        });
+      },
+
       /**
        * Removes listeners for a models updates on the socket
        *

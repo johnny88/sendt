@@ -68,7 +68,7 @@ exports.createByEmail = function(req, res) {
     currentUser.contacts.push(mongoose.Types.ObjectId(user._id));
     currentUser.save(function (err, user) {
       if(err) { return handleError(res, err); }
-      if (!user) return res.send(401);
+      if(!user) return res.send(401);
       return res.json(200, user.profile);
     });
   });
