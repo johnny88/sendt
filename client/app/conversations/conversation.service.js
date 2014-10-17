@@ -2,11 +2,16 @@
 
 angular.module('sendtApp')
   .factory('Conversation', function ($resource) {
-    return $resource('/api/conversations/:id/', {
+    return $resource('/api/conversations/:id/:email', {
       id: '@_id'
     },
     {
-      // Custom methods go here
+      findWithParticipant: {
+        method: 'GET',
+        params: {
+          email: 'email'
+        }
+      }
     });
   }).factory('Message', function ($resource) {
     return $resource('/api/messages/:id/', {

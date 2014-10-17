@@ -11,6 +11,5 @@ angular.module('sendtApp')
 
 		$scope.goToContacts = function() {
 			$location.path('/contacts');
-			console.log("sss")
 		};
 	});
