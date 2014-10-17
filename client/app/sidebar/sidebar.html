@@ -1,14 +1,15 @@
 <div class="side-bar">
   <div class="" ng-controller="SidebarCtrl">
-    <h3 class="contacts-title" ng-click="goToContacts()">Contacts</h3>
-    <h3 class="title">Conversations</h3>
+    <h3 class="contacts-title" ng-click="goToContacts()">Conversations</h3>
+    <!-- h3 class="title">Conversations</h3>
     <div class="chat-users" ng-repeat="conversation in conversations">
       <div ng-click="viewConversation(conversation)">
         <span ng-repeat="participant in conversation.participants"> 
           <div class="conversation" ng-if="participant._id != getCurrentUser()._id"><h4>{{participant.name}}</h4></div>
         </span>
+        {{conversation.owner}}
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

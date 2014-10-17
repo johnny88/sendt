@@ -62,16 +62,25 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Conversation.create(req.body, function(err, conversation) {
     if(err) { return handleError(res, err); }
+    if(!conversation) { res.send(404); }
+
+    console.log(conversation)
 
     async.each(conversation.participants, function(user, callback) {
-      user.conversations.push(conversation._id);
-      user.save(function (err) {
-        if (err) { return callback(err); } 
-        callback();
-      });
-    }, function(err) {
+      console.log(user)
+      User.findById(user, function (err, user) {
         if(err) { return handleError(res, err); }
-        res.json(201, conversation);
+        if(!user) { res.send(404); }
+        
+        user.conversations.push(conversation._id);
+        user.save(function (err) {
+          if (err) { return callback(err); } 
+          callback();
+        });
+      }, function(err) {
+          if(err) { return handleError(res, err); }
+          res.json(201, conversation);
+      });
     });
   });
 };

@@ -48,6 +48,8 @@ angular.module('sendtApp')
             array.push(item);
           }
 
+          console.log(item)
+
           cb(event, item, array);
         });
 
