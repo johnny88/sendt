@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash');
+var mongoose = require('mongoose');
 var User = require('../user/user.model');
 
 // Get list of contacts
@@ -55,6 +56,20 @@ exports.destroy = function(req, res) {
     contact.remove(function(err) {
       if(err) { return handleError(res, err); }
       return res.send(204);
+    });
+  });
+};
+
+exports.createByEmail = function(req, res) {
+  var currentUser = req.user;
+  User.findOne({email: req.params.email}, function (err, user) {
+    if(err) { return handleError(res, err); }
+    if(!user) { return res.send(404); }
+    currentUser.contacts.push(mongoose.Types.ObjectId(user._id));
+    currentUser.save(function (err, user) {
+      if(err) { return handleError(res, err); }
+      if (!user) return res.send(401);
+      return res.json(200, user.profile);
     });
   });
 };

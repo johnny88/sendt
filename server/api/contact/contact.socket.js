@@ -3,14 +3,15 @@
  */
 
 'use strict';
+var User = require('../user/user.model');
 
 exports.register = function(socket) {
-  // Contact.schema.post('save', function (doc) {
-  //   onSave(socket, doc);
-  // });
-  // Contact.schema.post('remove', function (doc) {
-  //   onRemove(socket, doc);
-  // });
+  User.schema.post('save', function (doc) {
+    onSave(socket, doc);
+  });
+  User.schema.post('remove', function (doc) {
+    onRemove(socket, doc);
+  });
 }
 
 function onSave(socket, doc, cb) {
