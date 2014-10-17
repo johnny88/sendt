@@ -32,14 +32,18 @@ exports.getConversationWithUser = function(req, res) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
 
-    for (var i=0; i<currentUser.conversations.length; i++) {
-      if (currentUser.conversations[i].length === 2) {
-        if (currentUser.conversations[i].indexOf(user._id) > -1) {
-          return res.json(200, currentUser.conversations[i]._id);
+    currentUser.populate('conversations',function (err, currentUser) {
+      if(err) { return handleError(res, err); }
+
+      for (var i=0; i<currentUser.conversations.length; i++) {      
+        if (currentUser.conversations[i].participants.length === 2) {
+          if (currentUser.conversations[i].participants.indexOf(user._id) > -1) {
+            return res.json(200, currentUser.conversations[i]._id);
+          }
         }
       }
-    }
-    return res.send(404);
+      return res.send(404);
+    });
   });
 
 };
