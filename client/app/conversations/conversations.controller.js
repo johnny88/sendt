@@ -2,7 +2,6 @@
 
 angular.module('sendtApp')
   .controller('ConversationsCtrl', function ($scope, $routeParams, Conversation, Message, Auth, $http, $location, socket) {
-    console.log($routeParams.id)
 
     Conversation.get({id: $routeParams.id}, function(convo) {
     	$scope.messages = Message.query({id: convo._id});
@@ -33,7 +32,7 @@ angular.module('sendtApp')
 
     $scope.conversations = Conversation.query();
     $scope.getCurrentUser = Auth.getCurrentUser;
-    $scope.sendMessage = function(form) {
+    $scope.sendMessage = function() {
       if ($scope.message.length === 0) { return; }
       if ($routeParams.id === null) { return; }
 
@@ -46,7 +45,7 @@ angular.module('sendtApp')
       socket.syncUpdates('message', $scope.messages);
 
       // Reset the form
-      $scope.message = ""
+      $scope.message = '';
       
     };
   });

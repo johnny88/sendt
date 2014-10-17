@@ -19,5 +19,5 @@ angular.module('sendtApp')
     },
     {
       // Custom methods go here
-    })
+    });
 	});
