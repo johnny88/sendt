@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('ConversationsCtrl', function ($scope, $routeParams, Conversation, Message, Auth, $http, $location) {
+  .controller('ConversationsCtrl', function ($scope, $routeParams, Conversation, Message, Auth, $http, $location, socket) {
     console.log($routeParams.id)
 
     Conversation.get({id: $routeParams.id}, function(convo) {
@@ -30,5 +30,23 @@ angular.module('sendtApp')
 	   //  	$scope.messages = Message.query({id: $routeParams.id});
 	   //  }
     // });
-    
+
+    $scope.conversations = Conversation.query();
+    $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.sendMessage = function(form) {
+      if ($scope.message.length === 0) { return; }
+      if ($routeParams.id === null) { return; }
+
+      var msg = new Message();
+      msg.conversation = $routeParams.id;
+      msg.message = {
+        text: $scope.message
+      };
+      Message.save(msg);
+      socket.syncUpdates('message', $scope.messages);
+
+      // Reset the form
+      $scope.message = ""
+      
+    };
   });

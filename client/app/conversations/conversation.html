@@ -1,5 +1,32 @@
-<div>
-  <ul ng-repeat="message in messages">
-    <li>{{message.message.text}}</li>
-  </ul>
+<div class="messages">  
+  <div class="messages-container">
+    <div ng-repeat="message in messages" class="arrow_box_holder">
+      <div ng-if="message.from == getCurrentUser()._id">
+        <div class="right"><div class="arrow_box_right">{{message.message.text}}</div></div>
+      </div>
+      <div ng-if="message.from != getCurrentUser()._id">
+        <div class="left"><div class="arrow_box_left">{{message.message.text}}</div></div>
+      </div>
+    </div>
+  </div>
+  <form class="form" name="form" ng-submit="sendMessage(form)" novalidate>
+    <div class="send-message">
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="message">
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit">Sendt!</button>
+        </span>
+      </div>
+    </div>
+  </form>
 </div>
+
+
+<script>
+  $(function() {
+    $(".messages").height($(document).height() - $(".navbar").height());
+    $( window ).resize(function(){
+      $(".messages").height($(document).height() - $(".navbar").height());
+    });
+  });
+</script>
