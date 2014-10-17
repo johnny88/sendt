@@ -1,32 +1,23 @@
-.conversations { 
+.side-bar{
   color: $text-color-dark;
   background-color: $background-dark;
-  .titled {
-    margin:0 10px 10px 10px;
+  .contacts-title{
+    color: white;
+    background-color: $secondary-color;
+    margin:0 0 10px 0;
     text-align: center;
-    padding: 25px 0 15px 0;
+    padding: 25px 0 25px 0;
+  }
+  .title{
+    margin:0 10px 0px 10px;
+    text-align: center;
+    padding: 25px 0 25px 0;
     border-bottom: 3px solid $background-light;
   }
-  .conversation {
-    margin:0 10px 10px 10px;
+  .conversation{
     border-bottom: 3px solid $background-light;
-    h3{
-      padding-left: 15px;
-    }
-  }
-}
-.messages{
-  color: $text-color-dark;
-  background-color: $background-light;
-  .messages-container{
-    overflow-y: scroll;
-    height: 90%;
-    padding: 10px;
-  }
-  .send-message{
-    bottom: 1%;
-    position: fixed;
-    padding: 0 2%;
-  }
-}
+    padding: 10px 20px;
+    margin:0 10px 0px 10px;
 
+  }
+}

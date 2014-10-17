@@ -1,0 +1,81 @@
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+}
+
+#banner h1 {
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.sendt-title-big{
+  padding: 100px 0;
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+span.primary-color{
+  color: #db0a5a;
+}
+
+.hero-unit {
+  .row{
+    padding-top:150px;
+    .image-container{
+      padding-top:30px;
+    }
+    .image-placeholder {
+      width:250px; 
+      height:250px; 
+      background-color:#ccc;
+      margin:auto;
+    }
+  }
+  position: relative;
+  padding: 30px 15px;
+  color: #595959;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.features-section{
+  background-color:#f5ab35;
+  .container-carosel{
+    padding:150px 0;
+    width:900px;
+    margin: auto;
+  }
+}
+
+.footer {
+  background-color: #434343;
+  text-align: center;
+  padding: 70px 0;
+  color: #fff;
+}
+
+.container-small{
+  width: 550px;
+  margin: auto;
+}
+.container-small.not-nav-section{
+  padding: 0 5px;
+}
+
+.container-small.nav-section{
+  padding-top:20px;
+}
+
+.dashboard-component-container-left{
+  padding-right: 0px;
+}
+.dashboard-component-container-right{
+  padding-left: 0px;
+}
