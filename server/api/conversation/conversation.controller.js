@@ -25,29 +25,24 @@ exports.index = function(req, res) {
   });
 };
 
-// exports.getConversationWithUser = function(req, res) {
-//   var currentUser = req.user;
-//   //user.conversations.find({participants: []})
+exports.getConversationWithUser = function(req, res) {
+  var currentUser = req.user;
+  
+  User.findById(req.params.user, function (err, user) {
+    if(err) { return handleError(res, err); }
+    if(!user) { return res.send(404); }
 
-//   User.findById(req.params.user, function (err, user) {
-//     if(err) { return handleError(res, err); }
-//     if(!conversation) { return res.send(404); }
+    for (var i=0; i<currentUser.conversations.length; i++) {
+      if (currentUser.conversations[i].length === 2) {
+        if (currentUser.conversations[i].indexOf(user._id) > -1) {
+          return res.json(200, currentUser.conversations[i]._id);
+        }
+      }
+    }
+    return res.send(404);
+  });
 
-    
-//     async.each(currentUser.conversations, function(conversation, callback) {
-//       conversation.find({ participants: { "$in" : [usesr._id]} }, function (err, conversation) {
-//         if(err) { return callback(err); }
-//         if(!conversation) { callback(err); }
-//         callback("F")
-//       });
-//     }, function(err) {
-//         if(err) { return handleError(res, err); }
-//         res.json(200, user.conversations);
-//     });
-
-//   });
-
-// };
+};
 
 // Get a single conversation
 exports.show = function(req, res) {
@@ -65,7 +60,17 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Conversation.create(req.body, function(err, conversation) {
     if(err) { return handleError(res, err); }
-    return res.json(201, conversation);
+
+    User.findById(req.user._id, function (err, user) {
+      if (err) { return handleError(res, err); }
+      if(!user) { return res.send(404); }   
+
+      user.conversations.push(conversation._id);
+      user.save(function (err) {
+        if (err) { return handleError(res, err); } 
+        return res.json(201, conversation);
+      });
+    });
   });
 };
 

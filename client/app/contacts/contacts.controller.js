@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('ContactsCtrl', function ($scope, $location, Contact, socket) {
+  .controller('ContactsCtrl', function ($scope, $location, Contact, socket, Conversation, Auth) {
     $scope.contacts = Contact.query(function(contacts) {
    		socket.syncContacts('contact', $scope.contacts);
     });
@@ -14,6 +14,12 @@ angular.module('sendtApp')
     };
 
     $scope.openConversation = function(contactId) {
-    	$location.path('/conversation/' + contactId);
+      var convo = new Conversation();
+      convo.participants = [Auth.getCurrentUser()._id, contactId];
+      convo.owner = Auth.getCurrentUser()._id;
+      Conversation.save(convo, function(conversation) {
+        console.log(conversation)  
+        $location.path('/conversation/' + conversation._id);
+      });
     };
   });
