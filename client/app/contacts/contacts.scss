@@ -3,3 +3,19 @@
   position: fixed;
   padding: 0 2%;
 }
+.contact-row {
+  margin: 20px;
+  background-color:$secondary-color;
+  padding: 10px 0;
+  border: 5px solid;
+  border-radius: 25px;
+  border-color: $background-light;
+}
+
+.contact-name{
+  color: white ;
+}
+
+.contact-image{
+  padding-left:30px;
+}

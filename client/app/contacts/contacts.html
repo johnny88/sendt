@@ -1,21 +1,44 @@
-<div class="col-md-12">
-	<ul ng-repeat="contact in contacts">
-		<li ng-click="openConversation(contact._id)">{{contact.name}} - {{contact.email}}</li>
-	</ul>
-</div>
+<div class="contact-container">
 
-<div class="add-contact">
-  <form class="form-horizontal" role="form" ng-submit="addContact()">
-    <div class="send-message">
-      <div class="input-group">
-        <input type="email" class="form-control" id="contactEmail" placeholder="email address" ng-model="email">
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-primary">Add Contact!</button>
-        </span>
-      </div>
+<div ng-repeat="contact in contacts">
+  <div class="contact-row row">
+    <div class="col-lg-2 ">
+      <div class="contact-image"><img src="http://placehold.it/80x80" alt=""></div>
     </div>
-  </form>
+    <div class="col-lg-10">
+      <h2 class="contact-name" contact ng-click="openConversation(contact._id)">{{contact.name}} - {{contact.email}}</h2>
+    </div>
+      
+  </div>
 </div>
+  
+
+
+  <div class="add-contact">
+    <form class="form-horizontal" role="form" ng-submit="addContact()">
+      <div class="send-message">
+        <div class="input-group">
+          <input type="email" class="form-control" id="contactEmail" placeholder="email address" ng-model="email">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary">Add Contact!</button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div> 
+
+
+
+<script>
+  $(function() {
+    $(".contact-container").height($(document).height() - $(".navbar").height());
+    $( window ).resize(function(){
+      $(".contact-container").height($(document).height() - $(".navbar").height());
+    });
+  });
+</script>
 
 
 
