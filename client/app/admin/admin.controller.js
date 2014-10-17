@@ -3,6 +3,8 @@
 angular.module('sendtApp')
   .controller('AdminCtrl', function ($scope, $http, Auth, User) {
 
+    console.log("sean was here")
+
     // Use the User $resource to fetch all users
     $scope.users = User.query();
 

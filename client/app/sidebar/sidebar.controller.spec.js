@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: MessagesCtrl', function () {
+describe('Controller: SidebarCtrl', function () {
 
   // load the controller's module
   beforeEach(module('sendtApp'));
 
-  var MessagesCtrl, scope;
+  var SidebarCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MessagesCtrl = $controller('MessagesCtrl', {
+    SidebarCtrl = $controller('SidebarCtrl', {
       $scope: scope
     });
   }));

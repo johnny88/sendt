@@ -1,13 +1,13 @@
-.conversations{
+.conversations { 
   color: $text-color-dark;
   background-color: $background-dark;
-  .title{
+  .titled {
     margin:0 10px 10px 10px;
     text-align: center;
     padding: 25px 0 15px 0;
     border-bottom: 3px solid $background-light;
   }
-  .conversation{
+  .conversation {
     margin:0 10px 10px 10px;
     border-bottom: 3px solid $background-light;
     h3{
