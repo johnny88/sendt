@@ -15,7 +15,7 @@ angular.module('sendtApp')
         })
         .then( function() {
           // Logged in, redirect to main page
-          $location.path('/');
+          $location.path('/contacts');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

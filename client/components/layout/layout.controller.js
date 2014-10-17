@@ -5,3 +5,4 @@ angular.module('sendtApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.getCurrentUser = Auth.getCurrentUser; 
   });
+  
