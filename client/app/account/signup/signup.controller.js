@@ -16,7 +16,7 @@ angular.module('sendtApp')
         })
         .then( function() {
           // Account created, redirect to main page
-          $location.path('/');
+          $location.path('/dashboard');
         })
         .catch( function(err) {
           err = err.data;

@@ -1,10 +1,5 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div  ng-hide="isLoggedIn()">
-  <div ng-include="'app/main/front_page.html'"></div>
-</div>
 
-<div  ng-show="isLoggedIn()">
-  
-  <div ng-include="'app/dashboard/conversations/conversations.html'"></div>
+<div ng-include="'app/main/front_page.html'"></div>
 
-</div>
+

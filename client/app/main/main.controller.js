@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('MainCtrl', function ($scope, $http, socket, Auth) {
+  .controller('MainCtrl', function ($scope, $http, $location, socket, Auth) {
     $scope.awesomeThings = [];
     $scope.isLoggedIn = Auth.isLoggedIn;
     
@@ -26,4 +26,7 @@ angular.module('sendtApp')
       socket.unsyncUpdates('thing');
     });
 
+    if ($scope.isLoggedIn) {
+      $location.path('/dashboard');
+    }
   });

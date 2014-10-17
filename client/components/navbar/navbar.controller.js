@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sendtApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, Modal) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -24,4 +24,10 @@ angular.module('sendtApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    if ($scope.isLoggedIn) {
+      $scope.redirect_home = "/dashboard";
+    } else {
+      $scope.redirect_home = "/";
+    }
   });
