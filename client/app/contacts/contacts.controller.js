@@ -3,14 +3,22 @@
 angular.module('sendtApp')
   .controller('ContactsCtrl', function ($scope, $location, Contact, socket, Conversation, Auth, $http) {
     $scope.contacts = Contact.query(function(contacts) {
-   		socket.syncContacts('contact', $scope.contacts);
+   		socket.socket.on('contact:save', function (user) {
+        if (user._id === Auth.getCurrentUser()._id) {
+          $scope.contacts = user.contacts;
+          console.log(user.contacts);
+          console.log("yay")
+        } else {
+           console.log("nay")
+        }
+      });
     });
 
     $scope.addContact = function() {
     	if ($scope.email.length === 0) { return; } 
     	Contact.add({ _id: $scope.email }, function(err) {
-          console.log(err);
-        });
+        console.log(err);
+      });
     };
 
     $scope.openConversation = function(contactId) {

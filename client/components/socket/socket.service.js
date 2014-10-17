@@ -65,6 +65,8 @@ angular.module('sendtApp')
         cb = cb || angular.noop;
 
         socket.on(modelName + ':save', function (user) {
+
+          //console.log(user)
           // //var oldItem = _.find(array, {_id: item._id});
           // var index = array.indexOf(oldItem);
           var event = 'created';
@@ -75,6 +77,7 @@ angular.module('sendtApp')
           //   array.splice(index, 1, item);
           //   event = 'updated';
           // } else {
+          //if (user._id === )
           array = user.contacts;
           var item = user;
 

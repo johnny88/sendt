@@ -31,10 +31,8 @@ exports.getConversationWithUser = function(req, res) {
   User.findById(req.params.user, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
-
     currentUser.populate('conversations',function (err, currentUser) {
       if(err) { return handleError(res, err); }
-
       for (var i=0; i<currentUser.conversations.length; i++) {      
         if (currentUser.conversations[i].participants.length === 2) {
           if (currentUser.conversations[i].participants.indexOf(user._id) > -1) {
@@ -65,15 +63,15 @@ exports.create = function(req, res) {
   Conversation.create(req.body, function(err, conversation) {
     if(err) { return handleError(res, err); }
 
-    User.findById(req.user._id, function (err, user) {
-      if (err) { return handleError(res, err); }
-      if(!user) { return res.send(404); }   
-
+    async.each(conversation.participants, function(user, callback) {
       user.conversations.push(conversation._id);
       user.save(function (err) {
-        if (err) { return handleError(res, err); } 
-        return res.json(201, conversation);
+        if (err) { return callback(err); } 
+        callback();
       });
+    }, function(err) {
+        if(err) { return handleError(res, err); }
+        res.json(201, conversation);
     });
   });
 };

@@ -66,10 +66,16 @@ exports.createByEmail = function(req, res) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
     currentUser.contacts.push(mongoose.Types.ObjectId(user._id));
-    currentUser.save(function (err, user) {
+    currentUser.save(function (err, currentUser) {
       if(err) { return handleError(res, err); }
-      if(!user) return res.send(401);
-      return res.json(200, user.profile);
+      if(!currentUser) return res.send(401);
+
+      user.contacts.push(mongoose.Types.ObjectId(currentUser._id));
+      user.save(function (err, user) {
+        if(err) { return handleError(res, err); }
+        if(!user) return res.send(401);
+        return res.json(200, currentUser.profile);
+      });
     });
   });
 };

@@ -15,7 +15,9 @@ exports.register = function(socket) {
 }
 
 function onSave(socket, doc, cb) {
-  socket.emit('contact:save', doc);
+	doc.populate('contacts', function(err, user) {
+		socket.emit('contact:save', user);
+	});
 }
 
 function onRemove(socket, doc, cb) {
