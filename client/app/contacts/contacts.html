@@ -1,6 +1,6 @@
 <div class="col-md-12">
 	<ul ng-repeat="contact in contacts">
-		<li>{{contact.name}} - {{contact.email}}</li>
+		<li ng-click="openConversation(contact._id)">{{contact.name}} - {{contact.email}}</li>
 	</ul>
 </div>
 
