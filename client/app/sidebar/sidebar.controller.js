@@ -8,5 +8,9 @@ angular.module('sendtApp')
     $scope.viewConversation = function(conversation) {
       $location.path('/conversation/' + conversation._id);
 		};
-		
-  });
+
+		$scope.goToContacts = function() {
+			$location.path('/contacts');
+			console.log("sss")
+		};
+	});
